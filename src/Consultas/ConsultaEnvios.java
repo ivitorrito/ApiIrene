@@ -2,6 +2,7 @@ package Consultas;
 
 import IreneSolutions.Decoder;
 import IreneSolutions.response;
+import static com.fasterxml.jackson.databind.AnnotationIntrospector.pair;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 /**
  *
@@ -62,10 +64,22 @@ public class ConsultaEnvios {
                 System.out.println("Respuesta exitosa:");
                 // System.out.println(response.body());
                 ObjectMapper objectMapper = new ObjectMapper();
-                Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), HashMap.class);
+                Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), TreeMap.class);
                 for (Map.Entry<String, Object> pair : objetoDinamico.entrySet()) {
-               System.out.println(pair);
+                    String clave = pair.getKey();
+                    Object valor = pair.getValue();
+                   // System.out.println(clave + " -> " + valor);
+                    //System.out.println(pair);
+                    if("Items".equals(clave)){
+                    System.out.println(pair.getValue());
+                    String claveBuscada = "SellerID";
+                    if(claveBuscada.equals(pair.getValue()))
+                        
+                    System.out.println(claveBuscada);
+                    
+                    }
                 }
+               
             } else {
                 System.out.println("Error en la llamada: " + response.statusCode());
                 System.out.println("Detalle: " + response.body());
