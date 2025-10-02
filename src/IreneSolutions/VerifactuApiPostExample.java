@@ -1,26 +1,17 @@
 package IreneSolutions;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.squareup.okhttp.ResponseBody;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import java.util.HashMap;
-
 import java.util.Map;
 
 public class VerifactuApiPostExample {
+
     public static void main(String[] args) throws IOException {
         // URL del endpoint
         String endpoint = "https://facturae.irenesolutions.com:8050/Kivu/Taxes/Verifactu/Invoices/Create";
@@ -71,20 +62,15 @@ public class VerifactuApiPostExample {
                 ObjectMapper objectMapper = new ObjectMapper();
                 Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), HashMap.class);
                 Gson gson = new Gson();
-               String json = gson.toJson(objetoDinamico.get("Return"));
+                String json = gson.toJson(objetoDinamico.get("Return"));
                 response resp = gson.fromJson(json, response.class);
-                
-              
-          //QRCodeGenerator.generateQrCodeBase64(resp.QrCode);
-           //AsposeQRCodeGenerator.generateQrCodeBase64(resp.QrCode.trim());
-                
-        // Acceder a los datos
-   Decoder decoder = new Decoder();
-   decoder.Decoder(resp.QrCode.trim());
-               
-    
-            
-      
+
+                //QRCodeGenerator.generateQrCodeBase64(resp.QrCode);
+                //AsposeQRCodeGenerator.generateQrCodeBase64(resp.QrCode.trim());
+                // Acceder a los datos
+                Decoder decoder = new Decoder();
+                decoder.Decoder(resp.QrCode.trim());
+
             } else {
                 System.out.println("Error en la llamada: " + response.statusCode());
                 System.out.println("Detalle: " + response.body());
@@ -94,5 +80,5 @@ public class VerifactuApiPostExample {
             System.out.println("Error al realizar la solicitud.");
         }
     }
-  
+
 }
