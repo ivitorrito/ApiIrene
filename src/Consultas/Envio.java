@@ -1,34 +1,22 @@
-package Consultas;
 
-import IreneSolutions.Decoder;
-import IreneSolutions.response;
-import static com.fasterxml.jackson.databind.AnnotationIntrospector.pair;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import java.io.IOException;
+package Consultas;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+  import com.fasterxml.jackson.databind.ObjectMapper;
+    import java.io.File;
+    import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONString;
 
-/**
- *
- * @author Taller
- */
-public class ConsultaEnvios {
+public class Envio {
+    
 
-    public static void main(String[] args) throws IOException {
-        String endpoint = "https://facturae.irenesolutions.com:8050/Kivu/Taxes/Verifactu/Invoices/GetFilteredList";
+    
+        public static void main(String[] args) throws IOException {
+              String endpoint = "https://facturae.irenesolutions.com:8050/Kivu/Taxes/Verifactu/Invoices/GetFilteredList";
 
         String requestBody = """
     {
@@ -48,7 +36,9 @@ public class ConsultaEnvios {
         }
     ]
 }""";
-        try {
+        
+        
+         try {
             // Crear cliente HTTP
             HttpClient client = HttpClient.newHttpClient();
 
@@ -66,26 +56,17 @@ public class ConsultaEnvios {
             if (response.statusCode() == 200) {
                 System.out.println("Respuesta exitosa:");
                 // System.out.println(response.body());
-               // ObjectMapper objectMapper = new ObjectMapper();
-               // Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), TreeMap.class);
-                //objetoDinamico.containsKey("Items");
-                
-                String contenido = response.body();
-                JSONObject menu = new JSONObject(contenido);
-                JSONArray pizzas = menu.getJSONArray("Items");
-                JSONObject menu1 = new JSONObject(pizzas.getJSONArray(0));
-                //JSONArray pizzas1 = menu1.getJSONArray("SellerID");
-                
-                
-               
-                    System.out.println(menu1);
-                
-                
-         
-                  
-                    
-                    
-                
+                ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            
+            Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), TreeMap.class);
+              String jsonString = objetoDinamico.entrySet().toString();
+
+            ConsultaEstilo persona = objectMapper.readValue(jsonString, ConsultaEstilo.class);
+
+            System.out.println("Nombre: " + persona.getCount());
+            System.out.println("Apellido: " + persona.getResultMessage());
+             
                
             } else {
                 System.out.println("Error en la llamada: " + response.statusCode());
@@ -95,5 +76,7 @@ public class ConsultaEnvios {
             e.printStackTrace();
             System.out.println("Error al realizar la solicitud.");
         }
-    }
-}
+        
+        }
+    } 
+
