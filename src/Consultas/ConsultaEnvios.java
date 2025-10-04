@@ -2,9 +2,13 @@ package Consultas;
 
 import IreneSolutions.Decoder;
 import IreneSolutions.response;
+import com.fasterxml.jackson.core.type.TypeReference;
 import static com.fasterxml.jackson.databind.AnnotationIntrospector.pair;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.google.gson.Gson;
+import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -66,27 +70,18 @@ public class ConsultaEnvios {
             if (response.statusCode() == 200) {
                 System.out.println("Respuesta exitosa:");
                 // System.out.println(response.body());
-               // ObjectMapper objectMapper = new ObjectMapper();
-               // Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), TreeMap.class);
-                //objetoDinamico.containsKey("Items");
-                
-                String contenido = response.body();
-                JSONObject menu = new JSONObject(contenido);
-                JSONArray pizzas = menu.getJSONArray("Items");
-                JSONObject menu1 = new JSONObject(pizzas.getJSONArray(0));
-                //JSONArray pizzas1 = menu1.getJSONArray("SellerID");
-                
-                
-               
-                    System.out.println(menu1);
-                
-                
-         
-                  
-                    
-                    
-                
-               
+                ObjectMapper objectMapper = new ObjectMapper();             
+                JsonNode jsonNode = objectMapper.readValue(response.body(), JsonNode.class);
+                JsonNode array = jsonNode.get("Items");
+                for (int i = 0; i < array.size(); i++) {
+                JsonNode jsonNode1 = array.get(i);            
+                String SellerID = jsonNode1.get("SellerID").asText();
+                String InvoiceID = jsonNode1.get("InvoiceID").asText();
+                System.out.println(SellerID);
+                System.out.println(InvoiceID);
+                }
+               // System.out.println(SellerID);
+
             } else {
                 System.out.println("Error en la llamada: " + response.statusCode());
                 System.out.println("Detalle: " + response.body());

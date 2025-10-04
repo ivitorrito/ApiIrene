@@ -1,17 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Consultas;
 
 import java.util.ArrayList;
 
 
 public class ConsultaEstilo {
-    String Offset;
+    static String Offset;
     String Count;
+      String TableNameSufix;
+    String FilterLower;
+    String FilterUpper;
+    public ArrayList<Object> Items = new ArrayList<Object>();
+   String ResultCode;
+   String ResultMessage;
 
-    public String getOffset() {
+  
+   
+
+    public static String getOffset() {
         return Offset;
     }
 
@@ -74,11 +80,6 @@ public class ConsultaEstilo {
     public void setResultMessage(String ResultMessage) {
         this.ResultMessage = ResultMessage;
     }
-    String TableNameSufix;
-    String FilterLower;
-    String FilterUpper;
-    public ArrayList<Object> Items = new ArrayList<Object>();
-   String ResultCode;
-   String ResultMessage;
+  
     
 }
