@@ -11,7 +11,7 @@ public class Decoder {
 
         // Convert Base64 String to File
         byte[] decodedBytes = Base64.getDecoder().decode(base64String);
-        Files.write(Paths.get("C:\\Facturas\\image.png"), decodedBytes);
+        Files.write(Paths.get("C:\\Facturas\\CodigoQr\\qr.png"), decodedBytes);
     
 }
 }
