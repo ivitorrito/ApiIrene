@@ -63,11 +63,8 @@ public class VerifactuApiPostExample {
                 Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), HashMap.class);
                 Gson gson = new Gson();
                 String json = gson.toJson(objetoDinamico.get("Return"));
+                
                 response resp = gson.fromJson(json, response.class);
-
-                //QRCodeGenerator.generateQrCodeBase64(resp.QrCode);
-                //AsposeQRCodeGenerator.generateQrCodeBase64(resp.QrCode.trim());
-                // Acceder a los datos
                 Decoder decoder = new Decoder();
                 decoder.Decoder(resp.QrCode.trim());
 
