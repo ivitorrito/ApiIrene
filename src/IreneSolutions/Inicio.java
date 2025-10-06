@@ -1,9 +1,14 @@
-package apiverifactu;
+package IreneSolutions;
 
-import IreneSolutions.JsonEnvio;
-import apiverifactu.MensajeJson.Anidado;
-import apiverifactu.MensajeJson.CrearJson;
-import apiverifactu.ListarFacturas.InicioLista;
+
+import com.google.gson.GsonBuilder;
+import java.io.IOException;
+import java.net.URI;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.net.http.HttpClient;
+
+
 
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -19,6 +24,7 @@ import com.google.gson.Gson;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.PrintStream;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -359,8 +365,8 @@ public class Inicio extends javax.swing.JFrame {
             if (statusCode >= 200 && statusCode < 300) {
                 //System.out.print("Respuesta exitosa: " + response.body());
                 String responseBody = response.body();
-                respuesta resp = new respuesta();
-                resp = gson.fromJson(responseBody, respuesta.class);
+                JsonEnvio resp = new JsonEnvio();
+                resp = gson.fromJson(responseBody, JsonEnvio.class);
                 PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
 
                 // Redirige System.out y System.err
@@ -369,10 +375,9 @@ public class Inicio extends javax.swing.JFrame {
 
                 //System.out.println(resp.getUrl());
                 //System.out.println(resp.getUuid());
-                GenerarQR qr = new GenerarQR();
-                qr.url(resp.getUrl());
+                
                 InsertaQr IQr = new InsertaQr();
-                IQr.InsertQr("C:\\Facturas\\CodigoQr\\qr.png", resp.getUuid());
+                IQr.InsertQr("C:\\Facturas\\CodigoQr\\qr.png");
                 List lista = new ArrayList();
                 String directorio = "C:\\Facturas\\FacturasConQr\\";
                 String extension = ".pdf";
@@ -425,8 +430,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void BotoonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoonListarActionPerformed
-        InicioLista iniciolista = new InicioLista();
-        iniciolista.setVisible(true);
+       
     }//GEN-LAST:event_BotoonListarActionPerformed
 
     /**
@@ -446,13 +450,13 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

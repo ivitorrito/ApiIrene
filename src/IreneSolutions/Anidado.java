@@ -1,4 +1,4 @@
-package apiverifactu.MensajeJson;
+package IreneSolutions;
 
 import java.util.List;
 
