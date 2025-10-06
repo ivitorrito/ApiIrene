@@ -15,6 +15,7 @@ import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 
 public class InsertaQr {
@@ -49,7 +50,7 @@ public class InsertaQr {
                                 try (
                                          PDPageContentStream contenido = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
                                     contenido.drawImage(pdImage, 230, 790, 50, 50);
-                                    PDType1Font font = new PDType1Font(PDType1Font.HELVETICA_BOLD.getCOSObject());
+                                    PDType1Font font = new PDType1Font(Standard14Fonts.FontName.SYMBOL);
                                     contenido.beginText();
                                     contenido.setFont(font, 8);
                                     contenido.newLineAtOffset(230, 790);

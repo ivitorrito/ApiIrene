@@ -83,7 +83,7 @@ public class PDFTextExtractor {
                         System.out.print(stripper.getTextForRegion("total+iva"));
                         // 4. Output results
                         //System.out.println("=== Extracted Text ===");
-                        //System.out.println(text);
+                        System.out.println(text);
 
                         // 5. (Optional) Save to text file
                         // Files.writeString(Path.of("extracted.txt"), text);

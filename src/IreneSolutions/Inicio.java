@@ -1,15 +1,5 @@
 package IreneSolutions;
 
-
-import com.google.gson.GsonBuilder;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.HttpClient;
-
-
-
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.net.URI;
@@ -90,7 +80,6 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea = new javax.swing.JTextArea();
-        BotoonListar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         BotonImprimir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -196,13 +185,6 @@ public class Inicio extends javax.swing.JFrame {
         textArea.setRows(5);
         jScrollPane1.setViewportView(textArea);
 
-        BotoonListar.setText("Listar");
-        BotoonListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotoonListarActionPerformed(evt);
-            }
-        });
-
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,13 +206,11 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BotoonListar)
-                .addGap(18, 18, 18)
+                .addGap(108, 108, 108)
                 .addComponent(btnActualizar)
                 .addGap(18, 18, 18)
                 .addComponent(BotonImprimir)
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +222,6 @@ public class Inicio extends javax.swing.JFrame {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BotoonListar)
                             .addComponent(btnActualizar)
                             .addComponent(BotonImprimir))
                         .addGap(16, 16, 16))))
@@ -354,8 +333,8 @@ public class Inicio extends javax.swing.JFrame {
             System.out.println(requestBody);
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("https://api.verifacti.com/verifactu/create"))
-                    .header("Authorization", "Bearer " + "vf_test_My3GPdKZWm9O2S+tl3ud2HXJwN29Mxnp56QhuhRLU3M=")
+                    .uri(URI.create("https://facturae.irenesolutions.com:8050/Kivu/Taxes/Verifactu/Invoices/Create"))
+                    //.header("Authorization", "Bearer " + "vf_test_My3GPdKZWm9O2S+tl3ud2HXJwN29Mxnp56QhuhRLU3M=")
                     .header("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofString(requestBody))
                     .build();
@@ -375,7 +354,6 @@ public class Inicio extends javax.swing.JFrame {
 
                 //System.out.println(resp.getUrl());
                 //System.out.println(resp.getUuid());
-                
                 InsertaQr IQr = new InsertaQr();
                 IQr.InsertQr("C:\\Facturas\\CodigoQr\\qr.png");
                 List lista = new ArrayList();
@@ -429,19 +407,11 @@ public class Inicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnActualizarActionPerformed
 
-    private void BotoonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotoonListarActionPerformed
-       
-    }//GEN-LAST:event_BotoonListarActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -450,27 +420,22 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-           // java.util.logging.Logger.getLogger(InicioLista.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new Inicio().setVisible(true);
-                PDFTextExtractor.pdftext();
-            }
-        });
+        java.awt.EventQueue.invokeLater(PDFTextExtractor::pdftext //new Inicio().setVisible(true);
+        );
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BotonImprimir;
-    private javax.swing.JButton BotoonListar;
     public static javax.swing.JTextField Descripcion;
     public static javax.swing.JComboBox<String> Empresa;
     public static javax.swing.JLabel Fecha;
