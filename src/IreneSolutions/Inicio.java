@@ -132,7 +132,7 @@ public class Inicio extends javax.swing.JFrame {
         NumeroFactura.setBackground(new java.awt.Color(0, 102, 255));
         NumeroFactura.setForeground(new java.awt.Color(0, 51, 204));
         NumeroFactura.setText("jLabel11");
-        getContentPane().add(NumeroFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 56, 89, -1));
+        getContentPane().add(NumeroFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 89, -1));
 
         Fecha.setBackground(new java.awt.Color(0, 102, 255));
         Fecha.setForeground(new java.awt.Color(0, 51, 204));
@@ -171,7 +171,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 105, -1, -1));
 
         Empresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "copiadoras costaluz", "asitecsur", " " }));
-        getContentPane().add(Empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 242, -1));
+        getContentPane().add(Empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 242, -1));
 
         jLabel13.setForeground(new java.awt.Color(0, 0, 153));
         jLabel13.setText("Descripcion");
