@@ -27,7 +27,7 @@ public class VerifactuApiPostExample {
                                 "SellerID": "B12959755",
                                 "CompanyName": "IRENE SOLUTIONS SL",
                                 "RelatedPartyID": "B44531218",
-                                "RelatedPartyName": "WEFINZ SOLUTIONS SL",
+                                "RelatedPartyName": "Ayuntamiento",
                                 "Text": "SERVICIOS INFORMATICOS",
                                 "TaxItems": [
                                     {

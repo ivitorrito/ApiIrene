@@ -14,12 +14,15 @@ import com.google.gson.Gson;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.PrintStream;
+import java.text.SimpleDateFormat;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -308,23 +311,30 @@ public class Inicio extends javax.swing.JFrame {
             jSon.setStatus("POST");
             jSon.setInvoiceType(Inicio.TipoFactura1.getSelectedItem().toString().trim());
             jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
-            jSon.setInvoiceDate(Inicio.Fecha.getText().trim());
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy", Locale.ENGLISH);
+
+            String dateInString = Inicio.Fecha.getText().trim();
+            Date date = formatter.parse(dateInString);
+            jSon.setInvoiceDate(date);
             jSon.setSellerID(Inicio.cif.getText().trim());
             jSon.setCompanyName(Inicio.Empresa.getSelectedItem().toString().trim());
-            jSon.setRelatedPartyID("Aqui El Cif Nuestro");
+            jSon.setRelatedPartyID("B21217385");
             jSon.setRelatedPartyName(Inicio.clientearea.getText().trim());
             jSon.setText(Inicio.Descripcion.getText().trim());
 
-            Anidado lineas = new Anidado();
+            Anidado TaxItems = new Anidado();
 
-            lineas.setBase_imponible(Inicio.Importe.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
-            lineas.setTipo_impositivo("21");
-            lineas.setCuota_repercutida(Inicio.Iva.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
+            TaxItems.setTaxScheme("01");
+           // TaxItems.setTaxType(Inicio.Importe.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
+           TaxItems.setTaxType("S1");
+            TaxItems.setTaxRate("21");
+            TaxItems.setTaxBase(Inicio.Importe.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
+            TaxItems.setTaxAmount(Inicio.Iva.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
 
-            jSon.lineas.add(lineas);
+            jSon.TaxItems.add(TaxItems);
 
-            jSon.setImporte_total(Inicio.ImporteTotal.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
-
+            // jSon.setImporte_total(Inicio.ImporteTotal.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
             //  jSon.setImporte_total(numeroDecimal);
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String jsonEjemplo = gson.toJson(jSon);
@@ -342,7 +352,7 @@ public class Inicio extends javax.swing.JFrame {
             int statusCode = response.statusCode();
 
             if (statusCode >= 200 && statusCode < 300) {
-                //System.out.print("Respuesta exitosa: " + response.body());
+                System.out.print("Respuesta exitosa: " + response.body());
                 String responseBody = response.body();
                 JsonEnvio resp = new JsonEnvio();
                 resp = gson.fromJson(responseBody, JsonEnvio.class);
