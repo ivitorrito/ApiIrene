@@ -21,7 +21,7 @@ public class GsonConsulta {
         FiltroDAOGsonConsulta Filters1 = new FiltroDAOGsonConsulta();
        Filters1.setFieldName("InvoiceDate");
        Filters1.setOperator("LIKE");
-       Filters1.setValue("2025-%");
+       Filters1.setValue(Listado.ComboAnio.getSelectedItem().toString().trim()+ "-%");
        FiltroDAOGsonConsulta Filters2 = new FiltroDAOGsonConsulta();
        Filters2.setFieldName("CompanyName");
        Filters2.setOperator("LIKE");
