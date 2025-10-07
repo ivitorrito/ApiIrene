@@ -317,9 +317,21 @@ public class Inicio extends javax.swing.JFrame {
             String dateInString = Inicio.Fecha.getText().trim();
             Date date = formatter.parse(dateInString);
             jSon.setInvoiceDate(date);
-            jSon.setSellerID(Inicio.cif.getText().trim());
+            String Combo = Inicio.Empresa.getSelectedItem().toString().trim();
+            if ("copiadoras costaluz".equals(Combo))
+                    {
+                    
+        String Cif = "B21217385";
+         jSon.setSellerID(Cif);
+        }
+            if("asitecsur".equals(Combo)){
+            
+            String Cif = "B21590385";
+            jSon.setSellerID(Cif);
+            }
+           // jSon.setSellerID(Cif);
             jSon.setCompanyName(Inicio.Empresa.getSelectedItem().toString().trim());
-            jSon.setRelatedPartyID("B21217385");
+            jSon.setRelatedPartyID(Inicio.cif.getText().trim());
             jSon.setRelatedPartyName(Inicio.clientearea.getText().trim());
             jSon.setText(Inicio.Descripcion.getText().trim());
 
@@ -481,4 +493,8 @@ public class Inicio extends javax.swing.JFrame {
     public javax.swing.JLabel liva;
     public static javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
+
+    private void If(boolean equals) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -22,7 +22,7 @@ public class VerifactuApiPostExample {
                      "ServiceKey": "aXZhbkBjb3BpYWRvcmFzY29zdGFsdXouY29tOk1hcmluYTA0MTIxOTgy",
                                 "Status": "POST",
                                 "InvoiceType": "F1",
-                                "InvoiceID": "FRTEST175920757",
+                                "InvoiceID": "dos",
                                 "InvoiceDate": "2025-09-30T04:45:09.737Z",
                                 "SellerID": "B12959755",
                                 "CompanyName": "IRENE SOLUTIONS SL",

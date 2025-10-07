@@ -40,7 +40,7 @@ public class OtraConsulta {
         {
             "FieldName": "SellerID",
             "Operator": "LIKE",
-            "Value": "'B12959755'"
+            "Value": "B21217385"
         },
         {
             "FieldName": "InvoiceDate",
@@ -66,7 +66,7 @@ public class OtraConsulta {
             // Manejar la respuesta
             if (response.statusCode() == 200) {
                 System.out.println("Respuesta exitosa:");
-                // System.out.println(response.body());
+                System.out.println(response.body());
              salida = response.body();
                
                 
