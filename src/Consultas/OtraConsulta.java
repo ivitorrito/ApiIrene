@@ -31,24 +31,8 @@ public class OtraConsulta {
       String salida="";
         String endpoint = "https://facturae.irenesolutions.com:8050/Kivu/Taxes/Verifactu/Invoices/GetFilteredList";
 
-        String requestBody = """
-    {
-    "ServiceKey": "aXZhbkBjb3BpYWRvcmFzY29zdGFsdXouY29tOk1hcmluYTA0MTIxOTgy",
-    "Offset": 0,
-    "Count": -1,
-    "Filters": [
-        {
-            "FieldName": "SellerID",
-            "Operator": "LIKE",
-            "Value": "B21217385"
-        },
-        {
-            "FieldName": "InvoiceDate",
-            "Operator": "LIKE",
-            "Value": "'2025-%'"
-        }
-    ]
-}""";
+        String requestBody = GsonConsulta.gsonEncadenado();
+        System.out.println(requestBody);
         try {
             // Crear cliente HTTP
             HttpClient client = HttpClient.newHttpClient();
