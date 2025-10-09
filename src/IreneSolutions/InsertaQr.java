@@ -17,7 +17,6 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
-
 public class InsertaQr {
 
     void InsertQr(String file1) throws Exception {
@@ -39,7 +38,7 @@ public class InsertaQr {
                         //File file1 = new File("C:\\Facturas\\CodigoQr\\qr.png");
                         try {
                             // Choose IMAGE File
-                            try ( PDDocument document = Loader.loadPDF(file)) {
+                            try (PDDocument document = Loader.loadPDF(file)) {
                                 // Choose IMAGE File
 
                                 PDImageXObject pdImage = PDImageXObject.createFromFile(file1, document);
@@ -48,7 +47,7 @@ public class InsertaQr {
                                 PDPage ultimaPagina = document.getPage(numeroDePaginas - 1);
                                 PDPage page = document.getPage(numeroDePaginas - 1);
                                 try (
-                                         PDPageContentStream contenido = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
+                                        PDPageContentStream contenido = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
                                     contenido.drawImage(pdImage, 230, 790, 50, 50);
                                     PDType1Font font = new PDType1Font(Standard14Fonts.FontName.SYMBOL);
                                     contenido.beginText();
@@ -57,56 +56,33 @@ public class InsertaQr {
                                     //contenido.showText("UUID: " + uuid);
                                     contenido.endText();
                                     contenido.close();
-                                    String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
-        File archivo = new File(nombreArchivo);
-                                        if (archivo.exists()) {
-            boolean eliminado = archivo.delete();
-            if (eliminado) {
-                System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
-            } else {
-                System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
-            }
-        } else {
-            System.out.println("El archivo " + nombreArchivo + " no existe.");
-        }
-    
-                                Path source = Paths.get("C:\\Facturas\\" + fichero);
-                        Path target = Paths.get("C:\\Facturas\\FacturasConQr\\");
-                        try {
-                            Files.move(source, target.resolve(source.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-                            System.out.println("Archivo movido con éxito.");
-                        } catch (IOException e) {
-                            System.err.println("Error al mover el archivo: " + e.getMessage());
-                        }
+
                                 }
                                 //Inicio.NumeroFactura.getText().trim()
                                 document.save("C:\\Facturas\\FacturasConQr\\" + Inicio.NumeroFactura.getText().trim() + ".pdf");
                                 document.close();
-                                //BORRA EL ARCHIVO QR
-                               /*  String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
-        File archivo = new File(nombreArchivo);
-                                        if (archivo.exists()) {
-            boolean eliminado = archivo.delete();
-            if (eliminado) {
-                System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
-            } else {
-                System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
-            }
-        } else {
-            System.out.println("El archivo " + nombreArchivo + " no existe.");
-        }
-    
+                                Thread.sleep(2000);
+                               /* String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
+                                File archivo = new File(nombreArchivo);
+                                if (archivo.exists()) {
+                                    boolean eliminado = archivo.delete();
+                                    if (eliminado) {
+                                        System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
+                                    } else {
+                                        System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
+                                    }
+                                } else {
+                                    System.out.println("El archivo " + nombreArchivo + " no existe.");
+                                }
+
                                 Path source = Paths.get("C:\\Facturas\\" + fichero);
-                        Path target = Paths.get("C:\\Facturas\\FacturasConQr\\");
-                        try {
-                            Files.move(source, target.resolve(source.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-                            System.out.println("Archivo movido con éxito.");
-                        } catch (IOException e) {
-                            System.err.println("Error al mover el archivo: " + e.getMessage());
-                        }*/
-                    
-                                
-                               
+                                Path target = Paths.get("C:\\Facturas\\FacturasConQr\\");
+                                try {
+                                    Files.move(source, target.resolve(source.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+                                    System.out.println("Archivo movido con éxito.");
+                                } catch (IOException e) {
+                                    System.err.println("Error al mover el archivo: " + e.getMessage());
+                                }*/
 
                             }
                         } catch (IOException e) {

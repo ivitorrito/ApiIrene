@@ -430,6 +430,20 @@ public class Inicio extends javax.swing.JFrame {
                 e.Envie(seleccion);
                 String st = "Mensaje Enviado \n Muchas Gracias";
                 JOptionPane.showMessageDialog(null, st, "MENSAJE ENVIADO!!", 1);
+                 String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
+        File archivo = new File(nombreArchivo);
+                                        if (archivo.exists()) {
+            boolean eliminado = archivo.delete();
+            if (eliminado) {
+                System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
+            } else {
+                System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
+            }
+        } else {
+            System.out.println("El archivo " + nombreArchivo + " no existe.");
+        }
+    
+                         
 
             } else {
                 System.err.println("Error: " + statusCode + " - " + response.body());
