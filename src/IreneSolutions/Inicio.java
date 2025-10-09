@@ -1,5 +1,6 @@
 package IreneSolutions;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.net.URI;
@@ -21,8 +22,10 @@ import java.time.format.DateTimeFormatter;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -85,6 +88,7 @@ public class Inicio extends javax.swing.JFrame {
         textArea = new javax.swing.JTextArea();
         btnActualizar = new javax.swing.JButton();
         BotonImprimir = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         liva = new javax.swing.JLabel();
@@ -202,6 +206,13 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("Listado");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -209,11 +220,13 @@ public class Inicio extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(108, 108, 108)
+                .addGap(27, 27, 27)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnActualizar)
                 .addGap(18, 18, 18)
                 .addComponent(BotonImprimir)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +239,8 @@ public class Inicio extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnActualizar)
-                            .addComponent(BotonImprimir))
+                            .addComponent(BotonImprimir)
+                            .addComponent(jButton2))
                         .addGap(16, 16, 16))))
         );
 
@@ -311,25 +325,25 @@ public class Inicio extends javax.swing.JFrame {
             jSon.setStatus("POST");
             jSon.setInvoiceType(Inicio.TipoFactura1.getSelectedItem().toString().trim());
             jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
-            
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy", Locale.ENGLISH);
 
-            String dateInString = Inicio.Fecha.getText().trim();
+            Locale espanol = new Locale("es", "ES");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", espanol);
+            String dateInString = Inicio.Fecha.getText();
             Date date = formatter.parse(dateInString);
             jSon.setInvoiceDate(date);
+
             String Combo = Inicio.Empresa.getSelectedItem().toString().trim();
-            if ("copiadoras costaluz".equals(Combo))
-                    {
-                    
-        String Cif = "B21217385";
-         jSon.setSellerID(Cif);
-        }
-            if("asitecsur".equals(Combo)){
-            
-            String Cif = "B21590385";
-            jSon.setSellerID(Cif);
+            if ("copiadoras costaluz".equals(Combo)) {
+
+                String Cif = "B21217385";
+                jSon.setSellerID(Cif);
             }
-           // jSon.setSellerID(Cif);
+            if ("asitecsur".equals(Combo)) {
+
+                String Cif = "B21590385";
+                jSon.setSellerID(Cif);
+            }
+            // jSon.setSellerID(Cif);
             jSon.setCompanyName(Inicio.Empresa.getSelectedItem().toString().trim());
             jSon.setRelatedPartyID(Inicio.cif.getText().trim());
             jSon.setRelatedPartyName(Inicio.clientearea.getText().trim());
@@ -338,8 +352,8 @@ public class Inicio extends javax.swing.JFrame {
             Anidado TaxItems = new Anidado();
 
             TaxItems.setTaxScheme("01");
-           // TaxItems.setTaxType(Inicio.Importe.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
-           TaxItems.setTaxType("S1");
+            // TaxItems.setTaxType(Inicio.Importe.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
+            TaxItems.setTaxType("S1");
             TaxItems.setTaxRate("21");
             TaxItems.setTaxBase(Inicio.Importe.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
             TaxItems.setTaxAmount(Inicio.Iva.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
@@ -364,15 +378,23 @@ public class Inicio extends javax.swing.JFrame {
             int statusCode = response.statusCode();
 
             if (statusCode >= 200 && statusCode < 300) {
-                System.out.print("Respuesta exitosa: " + response.body());
+                //System.out.print("Respuesta exitosa: " + response.body());
                 String responseBody = response.body();
                 JsonEnvio resp = new JsonEnvio();
                 resp = gson.fromJson(responseBody, JsonEnvio.class);
                 PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-
+                Thread.sleep(5000);
                 // Redirige System.out y System.err
                 System.setOut(printStream);
                 System.setErr(printStream);
+                ObjectMapper objectMapper = new ObjectMapper();
+                Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), HashMap.class);
+                Gson gson1 = new Gson();
+                String json = gson.toJson(objetoDinamico.get("Return"));
+                
+                response resp1 = gson1.fromJson(json, response.class);
+                Decoder decoder = new Decoder();
+                decoder.Decoder(resp1.QrCode.trim());
 
                 //System.out.println(resp.getUrl());
                 //System.out.println(resp.getUuid());
@@ -429,6 +451,11 @@ public class Inicio extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnActualizarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Consultas.Listado listado = new Consultas.Listado();
+        listado.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -473,6 +500,7 @@ public class Inicio extends javax.swing.JFrame {
     public javax.swing.JLabel clientedireccion;
     public javax.swing.JLabel codigocliente;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

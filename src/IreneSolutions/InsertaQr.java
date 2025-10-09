@@ -61,6 +61,20 @@ public class InsertaQr {
                                 //Inicio.NumeroFactura.getText().trim()
                                 document.save("C:\\Facturas\\FacturasConQr\\" + Inicio.NumeroFactura.getText().trim() + ".pdf");
                                 document.close();
+                                //BORRA EL ARCHIVO QR
+                                 String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
+        File archivo = new File(nombreArchivo);
+                                        if (archivo.exists()) {
+            boolean eliminado = archivo.delete();
+            if (eliminado) {
+                System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
+            } else {
+                System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
+            }
+        } else {
+            System.out.println("El archivo " + nombreArchivo + " no existe.");
+        }
+    
                                 Path source = Paths.get("C:\\Facturas\\" + fichero);
                         Path target = Paths.get("C:\\Facturas\\test\\");
                         try {

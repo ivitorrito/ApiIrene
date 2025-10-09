@@ -17,15 +17,23 @@ public class GsonConsulta {
        FiltroDAOGsonConsulta Filters = new FiltroDAOGsonConsulta();
        Filters.setFieldName("SellerID");
        Filters.setOperator("LIKE");
+       String cif = Listado.ComboEmpresa.getSelectedItem().toString();
+       if("copiadoras costaluz".equals(cif)){
        Filters.setValue("B21217385");
+       }
+       if("Asitecsur".equals(cif)){
+        Filters.setValue("B21590385");
+       
+       }
+       //Filters.setValue(Listado.ComboEmpresa.getSelectedItem().toString().trim());
         FiltroDAOGsonConsulta Filters1 = new FiltroDAOGsonConsulta();
        Filters1.setFieldName("InvoiceDate");
        Filters1.setOperator("LIKE");
-       Filters1.setValue(Listado.ComboAnio.getSelectedItem().toString().trim()+ "-%");
-       FiltroDAOGsonConsulta Filters2 = new FiltroDAOGsonConsulta();
+       Filters1.setValue(Listado.ComboAnio.getSelectedItem().toString().trim()+"-"+Listado.ComboMes.getSelectedItem()+"-%");
+       /*FiltroDAOGsonConsulta Filters2 = new FiltroDAOGsonConsulta();
        Filters2.setFieldName("CompanyName");
        Filters2.setOperator("LIKE");
-       Filters2.setValue("copiadoras costaluz");
+       Filters2.setValue(Listado.ComboEmpresa.getSelectedItem().toString().trim());*/
        
        //ME FALTA PONER CUANDO SELECCIONE LA EMPRESA QUE SALGA EL CIF.AQUI ABAJO
      //  Filters.setValue(Listado.ComboEmpresa.getSelectedItem().toString().trim());
@@ -54,7 +62,7 @@ public class GsonConsulta {
        jSon.Filters.add(filtro2);*/
      jSon.Filters.add(Filters);
      jSon.Filters.add(Filters1);
-     jSon.Filters.add(Filters2);
+    // jSon.Filters.add(Filters2);
        String jsonEjemplo = gson.toJson(jSon);
             
           //  System.out.println(jsonEjemplo);
