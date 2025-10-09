@@ -57,12 +57,7 @@ public class InsertaQr {
                                     //contenido.showText("UUID: " + uuid);
                                     contenido.endText();
                                     contenido.close();
-                                }
-                                //Inicio.NumeroFactura.getText().trim()
-                                document.save("C:\\Facturas\\FacturasConQr\\" + Inicio.NumeroFactura.getText().trim() + ".pdf");
-                                document.close();
-                                //BORRA EL ARCHIVO QR
-                                 String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
+                                    String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
         File archivo = new File(nombreArchivo);
                                         if (archivo.exists()) {
             boolean eliminado = archivo.delete();
@@ -76,13 +71,39 @@ public class InsertaQr {
         }
     
                                 Path source = Paths.get("C:\\Facturas\\" + fichero);
-                        Path target = Paths.get("C:\\Facturas\\test\\");
+                        Path target = Paths.get("C:\\Facturas\\FacturasConQr\\");
                         try {
                             Files.move(source, target.resolve(source.getFileName()), StandardCopyOption.REPLACE_EXISTING);
                             System.out.println("Archivo movido con éxito.");
                         } catch (IOException e) {
                             System.err.println("Error al mover el archivo: " + e.getMessage());
                         }
+                                }
+                                //Inicio.NumeroFactura.getText().trim()
+                                document.save("C:\\Facturas\\FacturasConQr\\" + Inicio.NumeroFactura.getText().trim() + ".pdf");
+                                document.close();
+                                //BORRA EL ARCHIVO QR
+                               /*  String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
+        File archivo = new File(nombreArchivo);
+                                        if (archivo.exists()) {
+            boolean eliminado = archivo.delete();
+            if (eliminado) {
+                System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
+            } else {
+                System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
+            }
+        } else {
+            System.out.println("El archivo " + nombreArchivo + " no existe.");
+        }
+    
+                                Path source = Paths.get("C:\\Facturas\\" + fichero);
+                        Path target = Paths.get("C:\\Facturas\\FacturasConQr\\");
+                        try {
+                            Files.move(source, target.resolve(source.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+                            System.out.println("Archivo movido con éxito.");
+                        } catch (IOException e) {
+                            System.err.println("Error al mover el archivo: " + e.getMessage());
+                        }*/
                     
                                 
                                

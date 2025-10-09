@@ -383,7 +383,7 @@ public class Inicio extends javax.swing.JFrame {
                 JsonEnvio resp = new JsonEnvio();
                 resp = gson.fromJson(responseBody, JsonEnvio.class);
                 PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-                Thread.sleep(5000);
+               // Thread.sleep(5000);
                 // Redirige System.out y System.err
                 System.setOut(printStream);
                 System.setErr(printStream);
