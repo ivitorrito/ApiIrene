@@ -74,7 +74,7 @@ public DefaultTableModel leer() {
  DefaultTableModel tabla = new DefaultTableModel();
  try{
      
-     String encabezado[] ={"SellerID","InvoiceID","InvoiceDate","StatusResponse"};
+     String encabezado[] ={"cif","numero factura","fecha","estado"};
      tabla.setColumnIdentifiers(encabezado);
      String datos[] = new String[4];
      //JSONArray arreglo = new JSONArray(get());
