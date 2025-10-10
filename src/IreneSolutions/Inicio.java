@@ -80,7 +80,6 @@ public class Inicio extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         Serie = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        Empresa = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         Descripcion = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
@@ -97,6 +96,14 @@ public class Inicio extends javax.swing.JFrame {
         Iva = new javax.swing.JLabel();
         ImporteTotal = new javax.swing.JLabel();
         TipoFactura1 = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        Empresa = new javax.swing.JComboBox<>();
 
         jButton1.setText("jButton1");
 
@@ -111,27 +118,27 @@ public class Inicio extends javax.swing.JFrame {
         setIconImages(null);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setText("Numero Factura");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 56, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("Fecha");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 78, 89, -1));
 
-        jLabel7.setForeground(new java.awt.Color(51, 0, 153));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel7.setText("Nombre Cliente");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 28, -1, -1));
 
-        jLabel8.setForeground(new java.awt.Color(51, 0, 153));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setText("Nif Cliente");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 84, 87, -1));
 
-        jLabel9.setForeground(new java.awt.Color(51, 0, 153));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel9.setText("Codigo Cliente");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 56, 87, -1));
 
-        jLabel10.setForeground(new java.awt.Color(51, 0, 153));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel10.setText("direccion");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(485, 118, 87, -1));
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(374, 28, -1, -1));
@@ -166,24 +173,21 @@ public class Inicio extends javax.swing.JFrame {
         clientedireccion.setText("jLabel11");
         getContentPane().add(clientedireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 118, 301, -1));
 
-        jLabel11.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel11.setText("Serie");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 28, 89, -1));
 
         Serie.setForeground(new java.awt.Color(0, 102, 255));
         getContentPane().add(Serie, new org.netbeans.lib.awtextra.AbsoluteConstraints(199, 28, 89, 16));
 
-        jLabel12.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("Tipo");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 105, -1, -1));
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        Empresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "copiadoras costaluz", "asitecsur", " " }));
-        getContentPane().add(Empresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 242, -1));
-
-        jLabel13.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Descripcion");
-        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 157, -1, -1));
-        getContentPane().add(Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 151, 242, -1));
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 154, -1, -1));
+        getContentPane().add(Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 151, 242, -1));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -248,6 +252,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel5.setForeground(new java.awt.Color(51, 0, 153));
         jLabel5.setText("Importe total");
@@ -309,7 +314,113 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 920, 150));
 
         TipoFactura1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "F1", "F2", "R1", "R2", "R3", "R4", "R5", "F3", " " }));
-        getContentPane().add(TipoFactura1, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 100, 242, -1));
+        getContentPane().add(TipoFactura1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 242, -1));
+
+        jPanel3.setBackground(new java.awt.Color(0, 204, 255));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 375, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 25, 375, 26));
+
+        jPanel4.setBackground(new java.awt.Color(0, 204, 204));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 375, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 50, -1, -1));
+
+        jPanel5.setBackground(new java.awt.Color(0, 153, 153));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 375, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 75, -1, -1));
+
+        jPanel6.setBackground(new java.awt.Color(0, 153, 153));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 375, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 108, -1, -1));
+
+        jPanel7.setBackground(new java.awt.Color(0, 102, 102));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 375, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 26, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 149, -1, -1));
+
+        jPanel8.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel14.setText("Empresa");
+
+        Empresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "copiadoras costaluz", "asitecsur", " " }));
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(jLabel14)
+                .addGap(18, 18, 18)
+                .addComponent(Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(575, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(3, 3, 3)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 191, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 220));
 
         pack();
         setLocationRelativeTo(null);
@@ -383,7 +494,7 @@ public class Inicio extends javax.swing.JFrame {
                 JsonEnvio resp = new JsonEnvio();
                 resp = gson.fromJson(responseBody, JsonEnvio.class);
                 PrintStream printStream = new PrintStream(new CustomOutputStream(textArea));
-               // Thread.sleep(5000);
+                // Thread.sleep(5000);
                 // Redirige System.out y System.err
                 System.setOut(printStream);
                 System.setErr(printStream);
@@ -391,7 +502,7 @@ public class Inicio extends javax.swing.JFrame {
                 Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), HashMap.class);
                 Gson gson1 = new Gson();
                 String json = gson.toJson(objetoDinamico.get("Return"));
-                
+
                 response resp1 = gson1.fromJson(json, response.class);
                 Decoder decoder = new Decoder();
                 decoder.Decoder(resp1.QrCode.trim());
@@ -425,25 +536,24 @@ public class Inicio extends javax.swing.JFrame {
                     }
                 }
                 String seleccion = JOptionPane.showInputDialog("Ingrese direccion de correo");  // el icono sera un iterrogante       
-                //System.out.println("El usuario ha escrito " + seleccion);
+                
                 EnviarMailComplejo e = new EnviarMailComplejo();
                 e.Envie(seleccion);
                 String st = "Mensaje Enviado \n Muchas Gracias";
                 JOptionPane.showMessageDialog(null, st, "MENSAJE ENVIADO!!", 1);
-                 String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
-        File archivo = new File(nombreArchivo);
-                                        if (archivo.exists()) {
-            boolean eliminado = archivo.delete();
-            if (eliminado) {
-                System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
-            } else {
-                System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
-            }
-        } else {
-            System.out.println("El archivo " + nombreArchivo + " no existe.");
-        }
-    
-                         
+                 //DESDE AQUI BORRA EL QR
+                String nombreArchivo = "C:\\Facturas\\CodigoQr\\qr.png"; // Ruta del archivo a borrar
+                File archivo = new File(nombreArchivo);
+                if (archivo.exists()) {
+                    boolean eliminado = archivo.delete();
+                    if (eliminado) {
+                        System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
+                    } else {
+                        System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
+                    }
+                } else {
+                    System.out.println("El archivo " + nombreArchivo + " no existe.");
+                }
 
             } else {
                 System.err.println("Error: " + statusCode + " - " + response.body());
@@ -520,6 +630,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -530,6 +641,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField6;
     public javax.swing.JLabel liva;
