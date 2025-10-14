@@ -96,7 +96,7 @@ public class Inicio extends javax.swing.JFrame {
         TipoFactura1 = new javax.swing.JComboBox<>();
         jPanel7 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        Descripcion = new javax.swing.JTextField();
+        Descripcion = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         NumeroFactura = new javax.swing.JLabel();
@@ -354,37 +354,32 @@ public class Inicio extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel13.setText("Descripcion");
 
-        Descripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DescripcionActionPerformed(evt);
-            }
-        });
+        Descripcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mantenimiento", "Alquiler y mantenimiento", "Alquiler", "Venta Consumibles", "Venta fotocopiadora" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 375, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(117, Short.MAX_VALUE)
+                .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(jLabel13)
-                    .addGap(36, 36, 36)
-                    .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 294, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 26, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(jLabel13))
-                        .addComponent(Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(3, 3, Short.MAX_VALUE)
+                    .addComponent(jLabel13)
+                    .addGap(0, 3, Short.MAX_VALUE)))
         );
 
         jPanel4.setBackground(new java.awt.Color(0, 204, 204));
@@ -485,7 +480,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(26, Short.MAX_VALUE)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(Empresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -552,7 +547,7 @@ public class Inicio extends javax.swing.JFrame {
             jSon.setCompanyName(Inicio.Empresa.getSelectedItem().toString().trim());
             jSon.setRelatedPartyID(Inicio.cif.getText().trim());
             jSon.setRelatedPartyName(Inicio.clientearea.getText().trim());
-            jSon.setText(Inicio.Descripcion.getText().trim());
+            jSon.setText(Inicio.Descripcion.getSelectedItem().toString().trim());
 
             Anidado TaxItems = new Anidado();
 
@@ -678,10 +673,6 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TipoFactura1ActionPerformed
 
-    private void DescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DescripcionActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -711,7 +702,7 @@ public class Inicio extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BotonImprimir;
-    public static javax.swing.JTextField Descripcion;
+    public static javax.swing.JComboBox<String> Descripcion;
     public static javax.swing.JComboBox<String> Empresa;
     public static javax.swing.JLabel Fecha;
     public static javax.swing.JLabel Importe;

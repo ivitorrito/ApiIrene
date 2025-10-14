@@ -48,12 +48,16 @@ public class InsertaQr {
                                 PDPage page = document.getPage(numeroDePaginas - 1);
                                 try (
                                         PDPageContentStream contenido = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
-                                    contenido.drawImage(pdImage, 230, 790, 50, 50);
-                                    PDType1Font font = new PDType1Font(Standard14Fonts.FontName.SYMBOL);
+                                    contenido.drawImage(pdImage, 190, 755, 90, 90);
+                                    PDType1Font font = new PDType1Font(Standard14Fonts.FontName.COURIER);
                                     contenido.beginText();
-                                    contenido.setFont(font, 8);
-                                    contenido.newLineAtOffset(230, 790);
-                                    //contenido.showText("UUID: " + uuid);
+                                    contenido.setFont(font, 6);
+                                    contenido.setLeading(10f);
+                                    contenido.newLineAtOffset(270, 810);
+                                    contenido.showText("    Factura verificable en la " );
+                                    contenido.newLine();
+                                    
+                                    contenido.showText("  sede electrónica de la AEAT" );
                                     contenido.endText();
                                     contenido.close();
 
