@@ -19,7 +19,7 @@ public class VerifactuApiPostExample {
         // Cuerpo de la solicitud (JSON)
         String requestBody = """
                 {
-                     "ServiceKey": "aXZhbkBjb3BpYWRvcmFzY29zdGFsdXouY29tOk1hcmluYTA0MTIxOTgy",
+                     "ServiceKey": "c2F0QGNvcGlhZG9yYXNjb3N0YWx1ei5jb206MTIzNDU=",
                                 "Status": "POST",
                                 "InvoiceType": "F1",
                                 "InvoiceID": "dos",
