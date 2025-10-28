@@ -42,6 +42,7 @@ public class InsertaQr {
                                 // Choose IMAGE File
 
                                 PDImageXObject pdImage = PDImageXObject.createFromFile(file1, document);
+                                PDImageXObject pdImage1 = PDImageXObject.createFromFile("src/Imagenes/cuadro.png", document);
 
                                 int numeroDePaginas = document.getNumberOfPages();
                                 PDPage ultimaPagina = document.getPage(numeroDePaginas - 1);
@@ -50,13 +51,13 @@ public class InsertaQr {
                                         PDPageContentStream contenido = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
                                     contenido.drawImage(pdImage, 190, 755, 90, 90);
                                     PDType1Font font = new PDType1Font(Standard14Fonts.FontName.COURIER);
+                                    contenido.drawImage(pdImage1, 375, 755, 80, 80);
                                     contenido.beginText();
                                     contenido.setFont(font, 6);
                                     contenido.setLeading(10f);
                                     contenido.newLineAtOffset(270, 810);
-                                    contenido.showText("    Factura verificable en la " );
+                                    contenido.showText("  Factura verificable en la " );
                                     contenido.newLine();
-                                    
                                     contenido.showText("  sede electrónica de la AEAT" );
                                     contenido.endText();
                                     contenido.close();

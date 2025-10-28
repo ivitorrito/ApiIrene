@@ -639,6 +639,8 @@ String key = "c2F0QGNvcGlhZG9yYXNjb3N0YWx1ei5jb206MTIzNDU=";
                 if (archivo.exists()) {
                     boolean eliminado = archivo.delete();
                     if (eliminado) {
+                        JOptionPane.showMessageDialog(null, "Codigo QR eliminado",
+                "INFORMATION_MESSAGE", JOptionPane.INFORMATION_MESSAGE);
                         System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
                     } else {
                         System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
