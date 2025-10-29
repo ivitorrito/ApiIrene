@@ -16,12 +16,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 
-/**
- * Ejemplo de envio de un correo de texto con una imagen adjunta con javamail
- *
- * @author Chuidiang
- *
-  */
+
 public class EnviarMailComplejo
 {
     /**

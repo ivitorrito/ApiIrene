@@ -23,6 +23,8 @@ public class JsonEnvio {
     String TaxBase;
     String TaxAmount;
      public ArrayList<Object> TaxItems = new ArrayList<Object>();
+     public ArrayList<Object> RectificationItems = new ArrayList<>();
+     
     
 
     public ArrayList<Object> getLineas() {
