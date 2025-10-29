@@ -1,10 +1,11 @@
 package IreneSolutions;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Rectificadas {
     private String InvoiceID;
-    private String InvoiceDate;
+    private Date InvoiceDate;
    
     public String getInvoiceID() {
         return InvoiceID;
@@ -14,13 +15,14 @@ public class Rectificadas {
         this.InvoiceID = InvoiceID;
     }
 
-    public String getInvoiceDate() {
+    public Date getInvoiceDate() {
         return InvoiceDate;
     }
 
-    public void setInvoiceDate(String InvoiceDate) {
+    public void setInvoiceDate(Date InvoiceDate) {
         this.InvoiceDate = InvoiceDate;
     }
+
 
   
 }

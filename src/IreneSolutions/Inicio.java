@@ -532,7 +532,8 @@ public class Inicio extends javax.swing.JFrame {
 
             Locale espanol = new Locale("es", "ES");
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", espanol);
-            String dateInString = Inicio.Fecha.getText().trim();
+             
+            String dateInString = Inicio.Fecha.getText();
             Date date = formatter.parse(dateInString);
             jSon.setInvoiceDate(date);
 
@@ -564,11 +565,12 @@ public class Inicio extends javax.swing.JFrame {
 
             jSon.TaxItems.add(TaxItems);
             
-            String rectificaciones=Inicio.TipoFactura1.getSelectedItem().toString().trim();
+            String rectificaciones=Inicio.TipoFactura1.getSelectedItem().toString();
             if ("R1".equals(rectificaciones)) {
             Rectificadas Rectification = new Rectificadas();
             Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
-            Rectification.setInvoiceDate("2024-12-04T23:00:00.000Z");
+            
+            Rectification.setInvoiceDate(date);
            jSon.RectificationItems.add(Rectification);
             }
 
