@@ -528,7 +528,8 @@ public class Inicio extends javax.swing.JFrame {
             jSon.setStatus("POST");
             jSon.setInvoiceType(Inicio.TipoFactura1.getSelectedItem().toString().trim());
             
-            jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+           // jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+           jSon.setInvoiceID("13556");
 
             Locale espanol = new Locale("es", "ES");
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", espanol);
@@ -568,7 +569,8 @@ public class Inicio extends javax.swing.JFrame {
             String rectificaciones=Inicio.TipoFactura1.getSelectedItem().toString();
             if ("R1".equals(rectificaciones)) {
             Rectificadas Rectification = new Rectificadas();
-            Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+           // Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+           Rectification.setInvoiceID("13456");
             
             Rectification.setInvoiceDate(date);
            jSon.RectificationItems.add(Rectification);
