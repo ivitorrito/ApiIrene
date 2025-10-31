@@ -1,4 +1,4 @@
-package IreneSolutions;
+
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
@@ -15,10 +15,7 @@ import com.google.gson.Gson;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.PrintStream;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.text.SimpleDateFormat;
 
 import java.time.LocalDate;
@@ -530,13 +527,13 @@ public class Inicio extends javax.swing.JFrame {
             jSon.setServiceKey(key);
             jSon.setStatus("POST");
             jSon.setInvoiceType(Inicio.TipoFactura1.getSelectedItem().toString().trim());
-            
-           // jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
-           jSon.setInvoiceID("13556");
+
+            // jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+            jSon.setInvoiceID("13556");
 
             Locale espanol = new Locale("es", "ES");
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", espanol);
-             
+
             String dateInString = Inicio.Fecha.getText();
             Date date = formatter.parse(dateInString);
             jSon.setInvoiceDate(date);
@@ -568,15 +565,15 @@ public class Inicio extends javax.swing.JFrame {
             TaxItems.setTaxAmount(Inicio.Iva.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
 
             jSon.TaxItems.add(TaxItems);
-            
-            String rectificaciones=Inicio.TipoFactura1.getSelectedItem().toString();
+
+            String rectificaciones = Inicio.TipoFactura1.getSelectedItem().toString();
             if ("R1".equals(rectificaciones)) {
-            Rectificadas Rectification = new Rectificadas();
-           // Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
-           Rectification.setInvoiceID("13456");
-            
-            Rectification.setInvoiceDate(date);
-           jSon.RectificationItems.add(Rectification);
+                Rectificadas Rectification = new Rectificadas();
+                // Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+                Rectification.setInvoiceID("13456");
+
+                Rectification.setInvoiceDate(date);
+                jSon.RectificationItems.add(Rectification);
             }
 
             // jSon.setImporte_total(Inicio.ImporteTotal.getText().trim().replaceAll("\\.", "").replaceAll("\\,", "."));
@@ -664,36 +661,28 @@ public class Inicio extends javax.swing.JFrame {
                 } else {
                     System.out.println("El archivo " + nombreArchivo + " no existe.");
                 }
-                 //DESDE AQUI BORRA LA FACTURA ANTIGUA
-                   String rutaCarpeta = "C:\\Facturas\\";
-        File carpeta = new File(rutaCarpeta);
+                //DESDE AQUI BORRA LA FACTURA ANTIGUA
+                String rutaCarpeta = "C:\\Facturas\\";
+                File carpeta = new File(rutaCarpeta);
 
-        // Obtiene todos los archivos y directorios dentro de la carpeta
-        File[] archivos = carpeta.listFiles();
+                // Obtiene todos los archivos y directorios dentro de la carpeta
+                File[] archivos = carpeta.listFiles();
 
-        if (archivos != null) {
-            for (File archivo1 : archivos) {
-                // Verifica si el archivo es un archivo regular y tiene la extensión .pdf
-                if (archivo1.isFile() && archivo1.getName().toLowerCase().endsWith(".pdf")) {
-                    // Elimina el archivo y comprueba si se eliminó correctamente
-                    if (archivo1.delete()) {
-                        System.out.println("Se elimino el archivo: " + archivo1.getName());
-                    } else {
-                        System.out.println("No se pudo eliminar el archivo: " + archivo1.getName());
+                if (archivos != null) {
+                    for (File archivo1 : archivos) {
+                        // Verifica si el archivo es un archivo regular y tiene la extensión .pdf
+                        if (archivo1.isFile() && archivo1.getName().toLowerCase().endsWith(".pdf")) {
+                            // Elimina el archivo y comprueba si se eliminó correctamente
+                            if (archivo1.delete()) {
+                                System.out.println("Se elimino el archivo: " + archivo1.getName());
+                            } else {
+                                System.out.println("No se pudo eliminar el archivo: " + archivo1.getName());
+                            }
+                        }
                     }
+                } else {
+                    System.out.println("No se pudo listar el contenido de la carpeta: " + rutaCarpeta);
                 }
-            }
-        } else {
-            System.out.println("No se pudo listar el contenido de la carpeta: " + rutaCarpeta);
-        }
-    
-
-                          
-                        
-                    
-                
-                
-                
 
             } else {
                 System.err.println("Error: " + statusCode + " - " + response.body());
@@ -740,7 +729,7 @@ public class Inicio extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -796,5 +785,4 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 
- 
 }

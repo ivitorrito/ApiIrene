@@ -1,5 +1,5 @@
 
-package IreneSolutions;
+
 
 public class response {
   String SellerID;
