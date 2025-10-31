@@ -16,6 +16,9 @@ import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.PrintStream;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 
 import java.time.LocalDate;
@@ -661,6 +664,36 @@ public class Inicio extends javax.swing.JFrame {
                 } else {
                     System.out.println("El archivo " + nombreArchivo + " no existe.");
                 }
+                 //DESDE AQUI BORRA LA FACTURA ANTIGUA
+                   String rutaCarpeta = "C:\\Facturas\\";
+        File carpeta = new File(rutaCarpeta);
+
+        // Obtiene todos los archivos y directorios dentro de la carpeta
+        File[] archivos = carpeta.listFiles();
+
+        if (archivos != null) {
+            for (File archivo1 : archivos) {
+                // Verifica si el archivo es un archivo regular y tiene la extensión .pdf
+                if (archivo1.isFile() && archivo1.getName().toLowerCase().endsWith(".pdf")) {
+                    // Elimina el archivo y comprueba si se eliminó correctamente
+                    if (archivo1.delete()) {
+                        System.out.println("Se eliminó el archivo: " + archivo1.getName());
+                    } else {
+                        System.out.println("No se pudo eliminar el archivo: " + archivo1.getName());
+                    }
+                }
+            }
+        } else {
+            System.out.println("No se pudo listar el contenido de la carpeta: " + rutaCarpeta);
+        }
+    
+
+                          
+                        
+                    
+                
+                
+                
 
             } else {
                 System.err.println("Error: " + statusCode + " - " + response.body());
