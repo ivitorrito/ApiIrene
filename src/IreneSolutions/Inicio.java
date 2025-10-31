@@ -677,7 +677,7 @@ public class Inicio extends javax.swing.JFrame {
                 if (archivo1.isFile() && archivo1.getName().toLowerCase().endsWith(".pdf")) {
                     // Elimina el archivo y comprueba si se eliminó correctamente
                     if (archivo1.delete()) {
-                        System.out.println("Se eliminó el archivo: " + archivo1.getName());
+                        System.out.println("Se elimino el archivo: " + archivo1.getName());
                     } else {
                         System.out.println("No se pudo eliminar el archivo: " + archivo1.getName());
                     }
@@ -736,15 +736,11 @@ public class Inicio extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        
         //</editor-fold>
 
         /* Create and display the form */
@@ -800,7 +796,5 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 
-    private void If(boolean equals) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+ 
 }
