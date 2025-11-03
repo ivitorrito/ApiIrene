@@ -46,7 +46,7 @@ public class InsertaQr {
 
                                 int numeroDePaginas = document.getNumberOfPages();
                                // PDPage ultimaPagina = document.getPage(numeroDePaginas - 1);
-                                PDPage page = document.getPage(numeroDePaginas - 1);
+                                PDPage page = document.getPage(0);
                                 try (
                                         PDPageContentStream contenido = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
                                     contenido.drawImage(pdImage, 190, 755, 90, 90);
