@@ -1,5 +1,4 @@
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -12,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gson.Gson;
+import java.awt.Desktop;
 import java.awt.print.PrinterJob;
 import java.io.File;
 import java.io.PrintStream;
@@ -528,8 +528,8 @@ public class Inicio extends javax.swing.JFrame {
             jSon.setStatus("POST");
             jSon.setInvoiceType(Inicio.TipoFactura1.getSelectedItem().toString().trim());
 
-            // jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
-            jSon.setInvoiceID("13556");
+            jSon.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+            //  jSon.setInvoiceID("13556");
 
             Locale espanol = new Locale("es", "ES");
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", espanol);
@@ -569,8 +569,7 @@ public class Inicio extends javax.swing.JFrame {
             String rectificaciones = Inicio.TipoFactura1.getSelectedItem().toString();
             if ("R1".equals(rectificaciones)) {
                 Rectificadas Rectification = new Rectificadas();
-                // Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
-                Rectification.setInvoiceID("13456");
+                Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
 
                 Rectification.setInvoiceDate(date);
                 jSon.RectificationItems.add(Rectification);
@@ -615,8 +614,8 @@ public class Inicio extends javax.swing.JFrame {
                 //System.out.println(resp.getUrl());
                 //System.out.println(resp.getUuid());
                 InsertaQr IQr = new InsertaQr();
-                IQr.InsertQr("C:\\Facturas\\CodigoQr\\qr.png");
-                List lista = new ArrayList();
+                IQr.InsertQr("C:\\Facturas\\CodigoQr\\qr.png", "C:\\Facturas\\CodigoQr\\cuadro.png");
+                //  List lista = new ArrayList();
                 String directorio = "C:\\Facturas\\FacturasConQr\\";
                 String extension = ".pdf";
                 File f = new File(directorio);
@@ -625,8 +624,8 @@ public class Inicio extends javax.swing.JFrame {
                     File[] ficheros = f.listFiles();
                     for (File fichero1 : ficheros) {
                         String fichero = fichero1.getName();
-                        if (fichero.contains(extension)) {
-                            lista.add(fichero);
+                        if (fichero.contains(Inicio.NumeroFactura.getText().trim())) {
+                            // lista.add(fichero);
                             File file = new File("C:\\Facturas\\FacturasConQr\\" + fichero);
 
                             //File file = new File("C:\\Facturas\\FacturasConQr\\103712.pdf");
@@ -697,7 +696,15 @@ public class Inicio extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_BotonImprimirActionPerformed
+    public void Print(String ruta) {
+        Desktop print = Desktop.getDesktop();
+        try {
+            File archivoAImprimir = new File(ruta);
+            print.print(archivoAImprimir);
+        } catch (IOException ex) {
+        }
 
+    }
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         dispose();
         PDFTextExtractor.pdftext();

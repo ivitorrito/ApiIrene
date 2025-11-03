@@ -19,7 +19,7 @@ import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
 
 public class InsertaQr {
 
-    void InsertQr(String file1) throws Exception {
+    void InsertQr(String file1,String file2) throws Exception {
         {
             ArrayList<String> lista = new ArrayList();
 
@@ -42,7 +42,7 @@ public class InsertaQr {
                                 // Choose IMAGE File
 
                                 PDImageXObject pdImage = PDImageXObject.createFromFile(file1, document);
-                                PDImageXObject pdImage1 = PDImageXObject.createFromFile("src/Imagenes/cuadro.png", document);
+                                PDImageXObject pdImage1 = PDImageXObject.createFromFile(file2, document);
 
                                 int numeroDePaginas = document.getNumberOfPages();
                                // PDPage ultimaPagina = document.getPage(numeroDePaginas - 1);
