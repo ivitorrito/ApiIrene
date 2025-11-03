@@ -620,9 +620,9 @@ public class Inicio extends javax.swing.JFrame {
                 String extension = ".pdf";
                 File f = new File(directorio);
 
-                if (f.exists()) { // Directorio existe }
+              /*  if (f.exists()) { // Directorio existe }
                     File[] ficheros = f.listFiles();
-                    for (File fichero1 : ficheros) {
+                    for (File fichero1 : ficheros) /*{
                         String fichero = fichero1.getName();
                         if (fichero.contains(Inicio.NumeroFactura.getText().trim())) {
                             // lista.add(fichero);
@@ -638,7 +638,9 @@ public class Inicio extends javax.swing.JFrame {
                             }
                         }
                     }
-                }
+                }*/
+              
+            Print(directorio+Inicio.NumeroFactura.getText().trim()+extension);
                 String seleccion = JOptionPane.showInputDialog("Ingrese direccion de correo");  // el icono sera un iterrogante       
 
                 EnviarMailComplejo e = new EnviarMailComplejo();
