@@ -8,9 +8,9 @@ public class GsonConsulta {
   
   
        public static String gsonEncadenado(){
-       Gson gson = new GsonBuilder().setPrettyPrinting().create();
+       Gson gson = new GsonBuilder().disableHtmlEscaping().setPrettyPrinting().create();
        DAOGsonConsulta  jSon = new DAOGsonConsulta();
-       jSon.setServiceKey("aXZhbkBjb3BpYWRvcmFzY29zdGFsdXouY29tOk1hcmluYTA0MTIxOTgy");
+       jSon.setServiceKey("c2F0QGNvcGlhZG9yYXNjb3N0YWx1ei5jb206MTIzNDU=");
        jSon.setOffset("0");
        jSon.setCount("-1");
        //jSon.setFilters("Filters");
