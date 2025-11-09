@@ -1,4 +1,5 @@
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -40,9 +41,7 @@ import org.apache.pdfbox.printing.PDFPageable;
  */
 public class Inicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Inicio
-     */
+   
     public Inicio() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/copiluz.png")).getImage());
@@ -50,6 +49,9 @@ public class Inicio extends javax.swing.JFrame {
         DateTimeFormatter formateador = DateTimeFormatter.ofPattern("MM/yyyy");
         String formatoMesYAnio = fechaActual.format(formateador);
         Serie.setText(formatoMesYAnio);
+        
+          
+               
 
     }
 
@@ -517,7 +519,12 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonImprimirActionPerformed
-
+ ConsultaPostgre consulta = new ConsultaPostgre();
+                String dato = codigocliente.getText();
+                consulta.test(dato);
+       
+                System.out.println(dato);
+                System.out.println(consulta.test);
         try {
 
             JsonEnvio jSon = new JsonEnvio();
@@ -591,6 +598,7 @@ public class Inicio extends javax.swing.JFrame {
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             int statusCode = response.statusCode();
+           
 
             if (statusCode >= 200 && statusCode < 300) {
                 //System.out.print("Respuesta exitosa: " + response.body());
@@ -620,9 +628,9 @@ public class Inicio extends javax.swing.JFrame {
                 String extension = ".pdf";
                 File f = new File(directorio);
 
-              /*  if (f.exists()) { // Directorio existe }
+                 if (f.exists()) { // Directorio existe }
                     File[] ficheros = f.listFiles();
-                    for (File fichero1 : ficheros) /*{
+                    for (File fichero1 : ficheros) {
                         String fichero = fichero1.getName();
                         if (fichero.contains(Inicio.NumeroFactura.getText().trim())) {
                             // lista.add(fichero);
@@ -638,11 +646,15 @@ public class Inicio extends javax.swing.JFrame {
                             }
                         }
                     }
-                }*/
+                }
+               // Print(directorio + Inicio.NumeroFactura.getText().trim() + extension);
+                String seleccion = JOptionPane.showInputDialog("Ingrese direccion de correo");
+                // el icono sera un iterrogante       
               
-            Print(directorio+Inicio.NumeroFactura.getText().trim()+extension);
-                String seleccion = JOptionPane.showInputDialog("Ingrese direccion de correo");  // el icono sera un iterrogante       
-
+               
+               
+                
+                
                 EnviarMailComplejo e = new EnviarMailComplejo();
                 e.Envie(seleccion);
                 String st = "Mensaje Enviado \n Muchas Gracias";
