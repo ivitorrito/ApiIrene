@@ -1,4 +1,5 @@
 
+import AuditarCarpeta.FileChangeWatcher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -47,6 +48,8 @@ public class Inicio extends javax.swing.JFrame {
         DateTimeFormatter formateador = DateTimeFormatter.ofPattern("MM/yyyy");
         String formatoMesYAnio = fechaActual.format(formateador);
         Serie.setText(formatoMesYAnio);
+        FileChangeWatcher fileChangeWatcher = new FileChangeWatcher();
+      
 
     }
 
@@ -760,6 +763,12 @@ public class Inicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(PDFTextExtractor::pdftext //new Inicio().setVisible(true);
         );
+         FileChangeWatcher fileChangeWatcher = new FileChangeWatcher();
+        try {
+            fileChangeWatcher.doWath("C://Facturas//");
+        } catch (IOException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BotonImprimir;
