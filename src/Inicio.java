@@ -1,5 +1,4 @@
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -41,7 +40,6 @@ import org.apache.pdfbox.printing.PDFPageable;
  */
 public class Inicio extends javax.swing.JFrame {
 
-   
     public Inicio() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/Imagenes/copiluz.png")).getImage());
@@ -49,9 +47,6 @@ public class Inicio extends javax.swing.JFrame {
         DateTimeFormatter formateador = DateTimeFormatter.ofPattern("MM/yyyy");
         String formatoMesYAnio = fechaActual.format(formateador);
         Serie.setText(formatoMesYAnio);
-        
-          
-               
 
     }
 
@@ -88,6 +83,8 @@ public class Inicio extends javax.swing.JFrame {
         Importe = new javax.swing.JLabel();
         Iva = new javax.swing.JLabel();
         ImporteTotal = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        NumeroRectificada = new javax.swing.JTextField();
         jPanel8 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         Empresa = new javax.swing.JComboBox<>();
@@ -236,6 +233,8 @@ public class Inicio extends javax.swing.JFrame {
         ImporteTotal.setText("jLabel11");
         ImporteTotal.setVerifyInputWhenFocusTarget(false);
 
+        jLabel15.setText("Numero de Factura Rectificada");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -248,10 +247,15 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ImporteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(ImporteTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15)
+                        .addGap(41, 41, 41)
+                        .addComponent(NumeroRectificada, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Importe, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Iva, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(654, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,11 +268,13 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(liva)
                     .addComponent(Iva))
-                .addGap(16, 16, 16)
+                .addGap(13, 13, 13)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(ImporteTotal))
-                .addContainerGap(37, Short.MAX_VALUE))
+                    .addComponent(ImporteTotal)
+                    .addComponent(jLabel15)
+                    .addComponent(NumeroRectificada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 920, 150));
@@ -519,12 +525,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonImprimirActionPerformed
- ConsultaPostgre consulta = new ConsultaPostgre();
-                String dato = codigocliente.getText();
-                consulta.test(dato);
-       
-                System.out.println(dato);
-                System.out.println(consulta.test);
+
         try {
 
             JsonEnvio jSon = new JsonEnvio();
@@ -573,10 +574,10 @@ public class Inicio extends javax.swing.JFrame {
 
             jSon.TaxItems.add(TaxItems);
 
-            String rectificaciones = Inicio.TipoFactura1.getSelectedItem().toString();
-            if ("R1".equals(rectificaciones)) {
+           // String rectificaciones = Inicio.TipoFactura1.getSelectedItem().toString();
+            if ("R1".equals(Inicio.TipoFactura1.getSelectedItem().toString())) {
                 Rectificadas Rectification = new Rectificadas();
-                Rectification.setInvoiceID(Inicio.NumeroFactura.getText().trim());
+                Rectification.setInvoiceID(Inicio.NumeroRectificada.getText().trim());
 
                 Rectification.setInvoiceDate(date);
                 jSon.RectificationItems.add(Rectification);
@@ -598,7 +599,6 @@ public class Inicio extends javax.swing.JFrame {
                     .build();
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             int statusCode = response.statusCode();
-           
 
             if (statusCode >= 200 && statusCode < 300) {
                 //System.out.print("Respuesta exitosa: " + response.body());
@@ -628,7 +628,7 @@ public class Inicio extends javax.swing.JFrame {
                 String extension = ".pdf";
                 File f = new File(directorio);
 
-                 if (f.exists()) { // Directorio existe }
+                if (f.exists()) { // Directorio existe }
                     File[] ficheros = f.listFiles();
                     for (File fichero1 : ficheros) {
                         String fichero = fichero1.getName();
@@ -647,14 +647,18 @@ public class Inicio extends javax.swing.JFrame {
                         }
                     }
                 }
-               // Print(directorio + Inicio.NumeroFactura.getText().trim() + extension);
-                String seleccion = JOptionPane.showInputDialog("Ingrese direccion de correo");
+                /////////////////////desde aqui Hace la consulta postgres//////////////////////////
+                ConsultaPostgre consulta = new ConsultaPostgre();
+                 String dato = codigocliente.getText();
+               // String dato = "709";
+                consulta.test(dato);
+
+                System.out.println(dato);
+                // System.out.println(consulta.test);
+                // Print(directorio + Inicio.NumeroFactura.getText().trim() + extension);
+                String seleccion = JOptionPane.showInputDialog("Ingrese direccion de correo",cif.getText());
                 // el icono sera un iterrogante       
-              
-               
-               
-                
-                
+
                 EnviarMailComplejo e = new EnviarMailComplejo();
                 e.Envie(seleccion);
                 String st = "Mensaje Enviado \n Muchas Gracias";
@@ -766,6 +770,7 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JLabel ImporteTotal;
     public static javax.swing.JLabel Iva;
     public static javax.swing.JLabel NumeroFactura;
+    public static javax.swing.JTextField NumeroRectificada;
     private javax.swing.JLabel Serie;
     public static javax.swing.JComboBox<String> TipoFactura1;
     public javax.swing.JButton btnActualizar;
@@ -781,6 +786,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

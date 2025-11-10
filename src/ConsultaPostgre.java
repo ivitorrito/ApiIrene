@@ -8,8 +8,8 @@ import java.sql.ResultSet;
 
 
 public class ConsultaPostgre {
-    String test;
-    public String test(String Dato){
+   void test(String Dato){
+   
      Connection BaseDatos = null;
     Statement st = null;
   
@@ -41,7 +41,7 @@ public class ConsultaPostgre {
             while    ( rs.next() ) {
               String  email =rs.getString("email");
               // String email= rs.getString("email");
-                System.out.println( "Cif : " + email ); 
+                System.out.println( "Correo : " + email ); 
                 Inicio.cif.setText(email);
                 
             }
@@ -53,7 +53,7 @@ public class ConsultaPostgre {
         System.err.println( e.getMessage() );
         }
        
+   }
+  
     
-   return test;
-    }
 }

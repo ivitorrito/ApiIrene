@@ -294,11 +294,17 @@
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="ImporteTotal" min="-2" pref="89" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="ImporteTotal" min="-2" pref="89" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                          <Component id="NumeroRectificada" min="-2" pref="140" max="-2" attributes="0"/>
+                      </Group>
                       <Component id="Importe" min="-2" pref="89" max="-2" attributes="0"/>
                       <Component id="Iva" min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="654" max="32767" attributes="0"/>
+                  <EmptySpace pref="304" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -315,12 +321,14 @@
                       <Component id="liva" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Iva" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ImporteTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="NumeroRectificada" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="37" max="32767" attributes="0"/>
+                  <EmptySpace pref="34" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -383,6 +391,16 @@
             <Property name="text" type="java.lang.String" value="jLabel11"/>
             <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel15">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Numero de Factura Rectificada"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="NumeroRectificada">
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
