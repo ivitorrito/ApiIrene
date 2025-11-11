@@ -53,11 +53,12 @@ public class InsertaQr {
                                     PDType1Font font = new PDType1Font(Standard14Fonts.FontName.COURIER);
                                     contenido.drawImage(pdImage1, 375, 755, 80, 80);
                                     contenido.beginText();
-                                    contenido.setFont(font, 6);
+                                    contenido.setFont(font, 4);
                                     contenido.setLeading(10f);
-                                    contenido.newLineAtOffset(270, 810);
-                                    contenido.showText("  Factura verificable en la " );
-                                    contenido.newLine();
+                                    contenido.newLineAtOffset(193, 755);
+                                    contenido.showText("    Factura verificable en la");
+                                            
+                                   contenido.newLine();
                                     contenido.showText("  sede electrónica de la AEAT" );
                                     contenido.endText();
                                     contenido.close();

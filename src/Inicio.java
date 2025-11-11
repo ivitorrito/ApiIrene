@@ -1,5 +1,5 @@
 
-import AuditarCarpeta.FileChangeWatcher;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.GsonBuilder;
 import java.io.IOException;
@@ -39,7 +39,7 @@ import org.apache.pdfbox.printing.PDFPageable;
  *
  * @author ivan
  */
-public class Inicio extends javax.swing.JFrame {
+public  class Inicio extends javax.swing.JFrame {
 
     public Inicio() {
         initComponents();
@@ -117,7 +117,6 @@ public class Inicio extends javax.swing.JFrame {
 
         jTextField6.setText("jTextField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Copiadoras Costaluz Facturas");
         setBackground(new java.awt.Color(0, 0, 102));
         setForeground(java.awt.Color.darkGray);
@@ -761,15 +760,12 @@ public class Inicio extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(PDFTextExtractor::pdftext //new Inicio().setVisible(true);
+        java.awt.EventQueue.invokeLater(PDFTextExtractor::pdftext 
         );
-         FileChangeWatcher fileChangeWatcher = new FileChangeWatcher();
-        try {
-            fileChangeWatcher.doWath("C://Facturas//");
-        } catch (IOException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       new Inicio().setVisible(false);
+         
     }
+  
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BotonImprimir;
     public static javax.swing.JComboBox<String> Descripcion;
@@ -782,7 +778,7 @@ public class Inicio extends javax.swing.JFrame {
     public static javax.swing.JTextField NumeroRectificada;
     private javax.swing.JLabel Serie;
     public static javax.swing.JComboBox<String> TipoFactura1;
-    public javax.swing.JButton btnActualizar;
+    public static javax.swing.JButton btnActualizar;
     public static javax.swing.JLabel cif;
     public static javax.swing.JLabel clientearea;
     public static javax.swing.JTextArea clientedireccion;
