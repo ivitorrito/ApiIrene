@@ -29,13 +29,13 @@ public class SystemTrayTest
             //Este listener permite salir de la aplicacion
             ActionListener exitListener = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("Exiting...");
+                   // System.out.println("Exiting...");
                     System.exit(0);
                 }
             };
              ActionListener ConfigurarApp = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("Configurando...");
+                  //  System.out.println("Configurando...");
                    
                 }
             };
@@ -80,7 +80,7 @@ public class SystemTrayTest
             }
            
         } else {
-            System.err.println("System tray is currently not supported.");
+           // System.err.println("System tray is currently not supported.");
         }
     }
   

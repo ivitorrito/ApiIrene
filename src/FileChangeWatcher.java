@@ -9,7 +9,7 @@ public class FileChangeWatcher {
 
     public void doWath(String directory) throws IOException {
 
-        System.out.println("WatchService in " + directory);
+       System.out.println("WatchService in " + directory);
 
         // Obtenemos el directorio
         Path directoryToWatch = Paths.get(directory);
@@ -23,7 +23,7 @@ public class FileChangeWatcher {
         // Registramos los eventos que queremos monitorear
         directoryToWatch.register(watchService, new WatchEvent.Kind[]{ENTRY_CREATE});
 
-        System.out.println("Started WatchService in " + directory);
+       System.out.println("Started WatchService in " + directory);
 
         try {
 
@@ -35,9 +35,9 @@ public class FileChangeWatcher {
                 for (WatchEvent event : key.pollEvents()) {
                     String eventKind = event.kind().toString();
                     String file = event.context().toString();
-                    System.out.println("Event : " + eventKind + " in File " + file);
+                   System.out.println("Event : " + eventKind + " in File " + file);
                     if ("ENTRY_CREATE".equals(eventKind)) {
-                        System.out.println("Configurando...");
+                      //  System.out.println("Configurando...");
                         Inicio in = new Inicio();
                         in.setVisible(true);
                         Inicio.btnActualizar.doClick();

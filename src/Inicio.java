@@ -591,7 +591,7 @@ public  class Inicio extends javax.swing.JFrame {
             String jsonEjemplo = gson.toJson(jSon);
 
             String requestBody = jsonEjemplo;
-            System.out.println(requestBody);
+           // System.out.println(requestBody);
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("https://facturae.irenesolutions.com:8050/Kivu/Taxes/Verifactu/Invoices/Create"))
@@ -673,12 +673,12 @@ public  class Inicio extends javax.swing.JFrame {
                     if (eliminado) {
                         JOptionPane.showMessageDialog(null, "Codigo QR eliminado",
                                 "INFORMATION_MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-                        System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
+                       // System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
                     } else {
-                        System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
+                      //  System.out.println("No se pudo eliminar el archivo " + nombreArchivo);
                     }
                 } else {
-                    System.out.println("El archivo " + nombreArchivo + " no existe.");
+                   // System.out.println("El archivo " + nombreArchivo + " no existe.");
                 }
                 //DESDE AQUI BORRA LA FACTURA ANTIGUA
                 String rutaCarpeta = "C:\\Facturas\\";
@@ -693,14 +693,14 @@ public  class Inicio extends javax.swing.JFrame {
                         if (archivo1.isFile() && archivo1.getName().toLowerCase().endsWith(".pdf")) {
                             // Elimina el archivo y comprueba si se eliminó correctamente
                             if (archivo1.delete()) {
-                                System.out.println("Se elimino el archivo: " + archivo1.getName());
+                               // System.out.println("Se elimino el archivo: " + archivo1.getName());
                             } else {
-                                System.out.println("No se pudo eliminar el archivo: " + archivo1.getName());
+                               // System.out.println("No se pudo eliminar el archivo: " + archivo1.getName());
                             }
                         }
                     }
                 } else {
-                    System.out.println("No se pudo listar el contenido de la carpeta: " + rutaCarpeta);
+                   // System.out.println("No se pudo listar el contenido de la carpeta: " + rutaCarpeta);
                 }
 
             } else {
