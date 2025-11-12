@@ -59,7 +59,7 @@ public class InsertaQr {
                                     contenido.setFont(font, 4);
                                     contenido.setLeading(10f);
                                     contenido.newLineAtOffset(237, 645);
-                                    contenido.showText("    Factura verificable en la");
+                                    contenido.showText("  Factura verificable  en  la");
                                     contenido.newLine();
                                     contenido.showText("  sede electrónica de la AEAT");
                                     contenido.endText();
