@@ -2,8 +2,8 @@
 
 
 public class response {
-  String SellerID;
-String CompanyName;
+  String ErrorDescription;
+String ErrorCode;
  String QrCode;
 
     public String getQrCode() {
@@ -20,19 +20,19 @@ String CompanyName;
 
    
 
-    public String getSellerID() {
-        return SellerID;
+    public String getErrorDescription() {
+        return ErrorDescription;
     }
 
-    public void setSellerID(String SellerID) {
-        this.SellerID = SellerID;
+    public void setErrorDescription(String SellerID) {
+        this.ErrorDescription = SellerID;
     }
 
-    public String getCompanyName() {
-        return CompanyName;
+    public String getErrorCode() {
+        return ErrorCode;
     }
 
-    public void setCompanyName(String CompanyName) {
-        this.CompanyName = CompanyName;
+    public void setErrorCode(String CompanyName) {
+        this.ErrorCode = CompanyName;
     }
 }

@@ -35,7 +35,8 @@ public class SystemTrayTest
             };
              ActionListener ConfigurarApp = new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                  //  System.out.println("Configurando...");
+                   Consultas.Listado listado = new Consultas.Listado();
+        listado.setVisible(true);
                    
                 }
             };
@@ -45,7 +46,7 @@ public class SystemTrayTest
 
             //Se agrega la opción de salir
             MenuItem defaultItem = new MenuItem("Salir");
-            MenuItem defaultItem1 = new MenuItem("Configurar");
+            MenuItem defaultItem1 = new MenuItem("Listados");
 
             //Se le asigna al item del popup el listener para salir de la app
             defaultItem.addActionListener(exitListener);

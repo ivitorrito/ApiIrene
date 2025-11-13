@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 import java.awt.Desktop;
 import java.awt.print.PrinterJob;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.PrintStream;
 
 import java.text.SimpleDateFormat;
@@ -616,13 +617,18 @@ public  class Inicio extends javax.swing.JFrame {
                 Map<String, Object> objetoDinamico = objectMapper.readValue(response.body(), HashMap.class);
                 Gson gson1 = new Gson();
                 String json = gson.toJson(objetoDinamico.get("Return"));
-
                 response resp1 = gson1.fromJson(json, response.class);
+                try(FileWriter writer = new FileWriter("C:\\Facturas\\Json\\"+Inicio.NumeroFactura.getText().trim()+".json")){
+                gson.toJson(json,writer);
+                
+                }
                 Decoder decoder = new Decoder();
                 decoder.Decoder(resp1.QrCode.trim());
+                
 
-                //System.out.println(resp.getUrl());
-                //System.out.println(resp.getUuid());
+                System.out.println(resp1.ErrorCode.trim());
+               System.out.println(resp1.ErrorDescription);
+                JOptionPane.showMessageDialog(null,resp1.ErrorCode.trim()+"\n"+resp1.ErrorDescription,"Mensaje AEAT",JOptionPane.INFORMATION_MESSAGE);
                 InsertaQr IQr = new InsertaQr();
                 IQr.InsertQr("C:\\Facturas\\CodigoQr\\qr.png", "C:\\Facturas\\CodigoQr\\cuadro.png");
                 //  List lista = new ArrayList();
@@ -671,8 +677,8 @@ public  class Inicio extends javax.swing.JFrame {
                 if (archivo.exists()) {
                     boolean eliminado = archivo.delete();
                     if (eliminado) {
-                        JOptionPane.showMessageDialog(null, "Codigo QR eliminado",
-                                "INFORMATION_MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+                       // JOptionPane.showMessageDialog(null, "Codigo QR eliminado",
+                       //         "INFORMATION_MESSAGE", JOptionPane.INFORMATION_MESSAGE);
                        // System.out.println("El archivo " + nombreArchivo + " se eliminó correctamente.");
                     } else {
                       //  System.out.println("No se pudo eliminar el archivo " + nombreArchivo);

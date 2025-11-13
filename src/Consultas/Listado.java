@@ -11,6 +11,8 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -154,8 +156,11 @@ public class Listado extends javax.swing.JFrame {
     private void BtnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBuscarActionPerformed
         OtraConsulta otra = new OtraConsulta();
         DefaultTableModel tabla = new DefaultTableModel();
+   
+       
         tabla = otra.leer();
-        TablaLista.setModel(tabla);
+       TablaLista.setModel(tabla);
+       TablaLista.setAutoCreateRowSorter(true);
 
 
     }//GEN-LAST:event_BtnBuscarActionPerformed

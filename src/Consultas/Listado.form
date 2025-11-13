@@ -125,10 +125,7 @@
                           <Component id="ComboEmpresa" max="32767" attributes="0"/>
                           <Component id="ComboMes" min="-2" pref="165" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="ComboAnio" min="-2" pref="93" max="-2" attributes="0"/>
-                          <EmptySpace min="72" pref="72" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="ComboAnio" alignment="0" min="-2" pref="93" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="BtnBuscar" min="-2" max="-2" attributes="0"/>
