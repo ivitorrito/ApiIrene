@@ -628,7 +628,9 @@ public  class Inicio extends javax.swing.JFrame {
 
                // System.out.println(resp1.ErrorCode.trim());
                System.out.println(resp1.ErrorDescription);
-                JOptionPane.showMessageDialog(null,resp1.ErrorCode.trim()+"\n"+resp1.ErrorDescription,"Mensaje AEAT",JOptionPane.INFORMATION_MESSAGE);
+               
+               
+                JOptionPane.showMessageDialog(null,resp1.StatusResponse.trim()+"\n","Mensaje AEAT",JOptionPane.INFORMATION_MESSAGE);
                 InsertaQr IQr = new InsertaQr();
                 IQr.InsertQr("C:\\Facturas\\CodigoQr\\qr.png", "C:\\Facturas\\CodigoQr\\cuadro.png");
                 //  List lista = new ArrayList();

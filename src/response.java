@@ -5,6 +5,15 @@ public class response {
   String ErrorDescription;
 String ErrorCode;
  String QrCode;
+ String StatusResponse;
+
+    public String getStatusResponse() {
+        return StatusResponse;
+    }
+
+    public void setStatusResponse(String StatusResponse) {
+        this.StatusResponse = StatusResponse;
+    }
 
     public String getQrCode() {
         return QrCode;
