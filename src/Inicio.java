@@ -626,7 +626,7 @@ public  class Inicio extends javax.swing.JFrame {
                 decoder.Decoder(resp1.QrCode.trim());
                 
 
-                System.out.println(resp1.ErrorCode.trim());
+               // System.out.println(resp1.ErrorCode.trim());
                System.out.println(resp1.ErrorDescription);
                 JOptionPane.showMessageDialog(null,resp1.ErrorCode.trim()+"\n"+resp1.ErrorDescription,"Mensaje AEAT",JOptionPane.INFORMATION_MESSAGE);
                 InsertaQr IQr = new InsertaQr();
