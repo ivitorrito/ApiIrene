@@ -7,19 +7,12 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+
 import java.util.ArrayList;
 import org.apache.pdfbox.Loader;
-import org.apache.pdfbox.pdfwriter.compress.CompressParameters;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
-import org.apache.pdfbox.pdmodel.common.PDRectangle;
-import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.font.Standard14Fonts;
-import org.apache.pdfbox.printing.PDFPrintable;
-import org.apache.pdfbox.util.Matrix;
-import org.apache.pdfbox.printing.Scaling;
 
 public class InsertaQr {
 
@@ -43,7 +36,7 @@ public class InsertaQr {
                             try (PDDocument document = Loader.loadPDF(file)) {
 
                                 PDImageXObject QR = PDImageXObject.createFromFile(file1, document);
-                                PDImageXObject ImagenEnBlanco = PDImageXObject.createFromFile(file2, document);
+                                //  PDImageXObject ImagenEnBlanco = PDImageXObject.createFromFile(file2, document);
 
                                 int numeroDePaginas = document.getNumberOfPages();
                                 PDPage ultimaPagina = document.getPage(numeroDePaginas - 1);
@@ -78,8 +71,18 @@ public class InsertaQr {
                                     contenido.beginText();
                                     contenido.setFont(font, 8);
                                     contenido.setLeading(10f);
-                                    contenido.newLineAtOffset(20, 190);
-                                    contenido.showText(Inicio.TextObservaciones.getText());
+                                    contenido.newLineAtOffset(20, 192);
+                                    String saludo = Inicio.TextObservaciones.getText();
+                                    int longitud = saludo.length();
+                                    int mitad = longitud / 2;
+                                    String primeraMitad = saludo.substring(0, mitad);
+                                    String segundaMitad = saludo.substring(mitad);
+                                    
+
+                                    contenido.showText(primeraMitad);
+                                    contenido.newLine();
+                                    contenido.showText(segundaMitad);
+                                    
                                     contenido.endText();
                                     contenido.close();
                                 }
