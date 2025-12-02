@@ -41,34 +41,51 @@ public class InsertaQr {
                         try {
                             // Choose IMAGE File
                             try (PDDocument document = Loader.loadPDF(file)) {
-                                
 
                                 PDImageXObject QR = PDImageXObject.createFromFile(file1, document);
                                 PDImageXObject ImagenEnBlanco = PDImageXObject.createFromFile(file2, document);
 
                                 int numeroDePaginas = document.getNumberOfPages();
-                                // PDPage ultimaPagina = document.getPage(numeroDePaginas - 1);
+                                PDPage ultimaPagina = document.getPage(numeroDePaginas - 1);
 
                                 PDPage page = document.getPage(0);
                                 try (
                                         PDPageContentStream contenido = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, true)) {
-                                    contenido.drawImage(QR, 235, 645, 90, 90);
+                                    contenido.drawImage(QR, 235, 638, 90, 90);
                                     PDType1Font font = new PDType1Font(Standard14Fonts.FontName.COURIER);
                                     //contenido.drawImage(ImagenEnBlanco, 375, 755, 80, 80);
                                     contenido.beginText();
                                     contenido.setFont(font, 4);
                                     contenido.setLeading(10f);
-                                    contenido.newLineAtOffset(238, 645);
+                                    contenido.newLineAtOffset(238, 630);
                                     contenido.showText("  Factura verificable  en  la");
                                     contenido.newLine();
                                     contenido.showText("  sede electrónica de la AEAT");
                                     contenido.endText();
                                     contenido.close();
                                 }
-                               
+                                /*contenido.beginText();
+                                    contenido.setFont(font, 7);
+                                    contenido.setLeading(10f);
+                                    contenido.newLineAtOffset(20, 200);
+                                    contenido.showText(Inicio.TextObservaciones.getText().trim());
+                                     contenido.endText();*/
+                                try (
+                                        PDPageContentStream contenido = new PDPageContentStream(document, ultimaPagina, PDPageContentStream.AppendMode.APPEND, true)) {
+
+                                    PDType1Font font = new PDType1Font(Standard14Fonts.FontName.TIMES_ROMAN);
+
+                                    contenido.beginText();
+                                    contenido.setFont(font, 8);
+                                    contenido.setLeading(10f);
+                                    contenido.newLineAtOffset(20, 190);
+                                    contenido.showText(Inicio.TextObservaciones.getText());
+                                    contenido.endText();
+                                    contenido.close();
+                                }
+
                                 document.save("C:\\Facturas\\FacturasConQr\\" + Inicio.NumeroFactura.getText().trim() + ".pdf");
                                 document.close();
-                                
 
                                 Thread.sleep(1000);
 
